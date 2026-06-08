@@ -23,6 +23,7 @@
 |---------|-----|
 | Sitio web | [bogota-apartments.builker.com](https://bogota-apartments.builker.com) |
 | API REST | [api.bogota-apartments.builker.com](https://api.bogota-apartments.builker.com) |
+| Contacto | [contacto@builker.com](mailto:contacto@builker.com) |
 
 ### Funcionalidades
 
@@ -30,6 +31,7 @@
 - **Mapa GIS** — Visualizador georreferenciado con capas catastrales (preparado para Mapbox)
 - **Descargas** — Reportes mensuales en CSV y JSON
 - **API** — Documentación y ejemplos de integración (cURL, JavaScript, Python)
+- **Blog** — Artículos sobre el mercado inmobiliario, gestionados con [Sanity CMS](https://www.sanity.io)
 
 ## Proyecto y aliados
 
@@ -47,6 +49,8 @@ Proyecto desarrollado por **[Builker S.A.S](https://builker.com)** con el apoyo 
 - [Tailwind CSS 4](https://tailwindcss.com)
 - [TypeScript](https://www.typescriptlang.org)
 - [Lucide React](https://lucide.dev) — iconos
+- [Sanity CMS](https://www.sanity.io) — blog y Studio embebido
+- [next-sanity](https://github.com/sanity-io/next-sanity) — cliente GROQ e integración con Next.js
 
 ## Desarrollo local
 
@@ -62,6 +66,33 @@ npm run dev
 
 Abre [http://localhost:3000](http://localhost:3000) en el navegador.
 
+### Blog con Sanity CMS
+
+1. Crea un proyecto en [sanity.io/manage](https://www.sanity.io/manage) o ejecuta `npx sanity@latest init` en la raíz del repositorio.
+2. Copia `.env.example` a `.env.local` y completa las variables:
+
+```bash
+cp .env.example .env.local
+```
+
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=tu-project-id
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2025-01-01
+```
+
+3. Abre el Studio embebido en [http://localhost:3000/studio](http://localhost:3000/studio) (con `npm run dev`) o ejecuta `npm run studio` para el Studio standalone.
+4. Crea un artículo de tipo **Artículo**, completa título, slug, resumen, imagen y contenido, y publícalo.
+5. El artículo aparecerá en [http://localhost:3000/blog](http://localhost:3000/blog) y en `/blog/[slug]`.
+
+Para desplegar el Studio hospedado en Sanity: `npm run studio:deploy`.
+
+> **Nota:** `/studio` es de uso interno (gestión de contenido). La página pública `/blog` no enlaza al Studio.
+
+### Versionado
+
+La versión del sitio se define en `package.json` y se muestra en el footer (por ejemplo, `v0.1.0`). Para publicar una nueva versión, actualiza el campo `version` en ese archivo.
+
 ### Scripts disponibles
 
 | Comando | Descripción |
@@ -70,16 +101,23 @@ Abre [http://localhost:3000](http://localhost:3000) en el navegador.
 | `npm run build` | Build de producción |
 | `npm run start` | Servir build de producción |
 | `npm run lint` | Ejecutar ESLint |
+| `npm run studio` | Sanity Studio standalone |
+| `npm run studio:deploy` | Desplegar Studio en Sanity Cloud |
 
 ## Estructura del repositorio
 
 ```
 app/                    # Rutas y layout (App Router)
-  (site)/               # Páginas: /, /mapa, /descargas, /api
+  (site)/               # Páginas: /, /mapa, /descargas, /api, /blog
+  studio/               # Sanity Studio embebido (/studio)
 components/
+  blog/                 # Listado y vista de artículos
   site/                 # Header, footer, shell
   views/                # Vistas por sección
-lib/bogota-apartments/  # Datos mock, URLs del sitio y API
+lib/
+  bogota-apartments/    # Datos mock, URLs del sitio y API
+  sanity/               # Cliente GROQ, queries e imágenes
+sanity/                 # Esquemas y configuración de Sanity
 public/                 # Assets estáticos (favicons, logo)
 ```
 

@@ -1,11 +1,13 @@
 import Link from "next/link";
-import { ExternalLink, GitBranch, Unlock } from "lucide-react";
+import { ExternalLink, GitBranch, Mail, Unlock } from "lucide-react";
+import { CONTACT_EMAIL, SITE_VERSION } from "@/lib/bogota-apartments/site";
 
 const FOOTER_LINKS = [
   { href: "/", label: "Inicio" },
   { href: "/mapa", label: "Mapa GIS" },
   { href: "/descargas", label: "Descargas" },
   { href: "/api", label: "API REST" },
+  { href: "/blog", label: "Blog" },
 ] as const;
 
 const PARTNERS = [
@@ -69,6 +71,13 @@ export function SiteFooter() {
                 Open Data
               </span>
             </div>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-white transition-colors w-fit"
+            >
+              <Mail size={14} className="text-slate-500" />
+              {CONTACT_EMAIL}
+            </a>
           </div>
 
           <div className="md:col-span-3 space-y-3">
@@ -105,11 +114,12 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 text-xs text-slate-500">
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-slate-500">
           <p>
             © {new Date().getFullYear()} Bogotá Apartments · Datos abiertos
             inmobiliarios
           </p>
+          <p className="text-slate-600">v{SITE_VERSION}</p>
         </div>
       </div>
     </footer>

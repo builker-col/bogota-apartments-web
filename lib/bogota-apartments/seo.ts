@@ -28,6 +28,8 @@ type CreatePageMetadataOptions = {
   path: string;
   keywords?: string[];
   absoluteTitle?: boolean;
+  ogImage?: string;
+  ogImageAlt?: string;
 };
 
 export function createPageMetadata({
@@ -36,10 +38,14 @@ export function createPageMetadata({
   path,
   keywords,
   absoluteTitle = false,
+  ogImage,
+  ogImageAlt,
 }: CreatePageMetadataOptions): Metadata {
   const url = `${SITE_URL}${path}`;
   const pageKeywords = keywords ?? [...SEO_KEYWORDS];
   const ogTitle = absoluteTitle ? title : `${title} | ${SITE_NAME}`;
+  const imageUrl = ogImage ?? OG_IMAGE;
+  const imageAlt = ogImageAlt ?? SITE_NAME;
 
   return {
     title: absoluteTitle ? { absolute: title } : title,
@@ -57,8 +63,8 @@ export function createPageMetadata({
       description,
       images: [
         {
-          url: OG_IMAGE,
-          alt: SITE_NAME,
+          url: imageUrl,
+          alt: imageAlt,
         },
       ],
     },
@@ -66,7 +72,7 @@ export function createPageMetadata({
       card: "summary_large_image",
       title: ogTitle,
       description,
-      images: [OG_IMAGE],
+      images: [imageUrl],
     },
     robots: {
       index: true,
@@ -80,4 +86,5 @@ export const SITE_ROUTES = [
   { path: "/mapa", priority: 0.8 },
   { path: "/descargas", priority: 0.8 },
   { path: "/api", priority: 0.8 },
+  { path: "/blog", priority: 0.8 },
 ] as const;

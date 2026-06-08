@@ -1,8 +1,11 @@
 import { SITE_URL } from "@/lib/bogota-apartments/site";
 import {
   DEFAULT_DESCRIPTION,
+  OG_IMAGE,
   SITE_NAME,
 } from "@/lib/bogota-apartments/seo";
+import { urlFor } from "@/lib/sanity/image";
+import type { Post } from "@/lib/sanity/types";
 
 type JsonLdProps = {
   data: Record<string, unknown> | Record<string, unknown>[];
@@ -61,6 +64,38 @@ export function HomePageJsonLd() {
         about: {
           "@type": "Thing",
           name: "Mercado inmobiliario de Bogotá D.C.",
+        },
+      }}
+    />
+  );
+}
+
+export function BlogPostJsonLd({ post }: { post: Post }) {
+  const imageUrl = post.mainImage
+    ? urlFor(post.mainImage).width(1200).height(630).auto("format").url()
+    : `${SITE_URL}${OG_IMAGE}`;
+
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.excerpt,
+        image: imageUrl,
+        datePublished: post.publishedAt,
+        author: {
+          "@type": "Organization",
+          name: post.author || SITE_NAME,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: SITE_NAME,
+          url: SITE_URL,
+        },
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `${SITE_URL}/blog/${post.slug}`,
         },
       }}
     />

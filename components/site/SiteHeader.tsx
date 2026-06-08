@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Code, Database, Download, Map, Menu, X } from "lucide-react";
+import { Code, Database, Download, Map, Menu, Newspaper, X } from "lucide-react";
 import { SiteLogo } from "./SiteLogo";
 
 type NavItem = {
@@ -18,6 +18,7 @@ const NAV_ITEMS: NavItem[] = [
   { href: "/mapa", label: "Mapa Catastral", icon: Map },
   { href: "/descargas", label: "Reportes Mensuales", icon: Database },
   { href: "/api", label: "API Desarrolladores", icon: Code },
+  { href: "/blog", label: "Blog", icon: Newspaper },
 ];
 
 function isActive(pathname: string, href: string, exact?: boolean) {
