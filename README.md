@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="https://bogota-apartments.builker.com"><strong>Sitio web</strong></a> ·
-  <a href="https://api.bogota-apartments.builker.com"><strong>API</strong></a>
+  <a href="https://bogota.builker.com"><strong>Sitio web</strong></a> ·
+  <a href="https://api.bogota.builker.com"><strong>API</strong></a>
 </p>
 
 ---
@@ -21,8 +21,8 @@
 
 | Recurso | URL |
 |---------|-----|
-| Sitio web | [bogota-apartments.builker.com](https://bogota-apartments.builker.com) |
-| API REST | [api.bogota-apartments.builker.com](https://api.bogota-apartments.builker.com) |
+| Sitio web | [bogota.builker.com](https://bogota.builker.com) |
+| API REST | [api.bogota.builker.com](https://api.bogota.builker.com) |
 | Contacto | [contacto@builker.com](mailto:contacto@builker.com) |
 
 ### Funcionalidades
