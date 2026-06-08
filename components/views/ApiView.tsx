@@ -12,6 +12,7 @@ import {
   type ApiLanguage,
 } from "@/lib/bogota-apartments/api-snippets";
 import { copyToClipboard } from "@/lib/bogota-apartments/copy-to-clipboard";
+import { InmodataApiBanner } from "@/components/promo/InmodataApiBanner";
 import { useToast } from "@/components/site/ToastProvider";
 
 const API_LANGUAGES: ApiLanguage[] = ["curl", "javascript", "python"];
@@ -40,6 +41,8 @@ export function ApiView() {
           API de datos inmobiliarios de Bogotá
         </h1>
       </div>
+
+      <InmodataApiBanner />
 
       <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
         <h2 className="text-lg font-extrabold text-slate-800 flex items-center gap-2">
