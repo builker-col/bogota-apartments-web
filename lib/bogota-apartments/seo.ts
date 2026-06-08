@@ -20,7 +20,7 @@ export const SEO_KEYWORDS = [
 export const DEFAULT_DESCRIPTION =
   "Bogotá Apartments: datos abiertos del mercado inmobiliario en Bogotá. Precios por m², mapas catastrales, reportes CSV/JSON y API REST. Proyecto open source.";
 
-export const OG_IMAGE = "/img/logo.png";
+export const OG_IMAGE = "/img/OG-image.png";
 
 type CreatePageMetadataOptions = {
   title: string;
