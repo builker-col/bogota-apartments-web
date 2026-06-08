@@ -49,7 +49,7 @@ function ExternalPartnerLink({
 export function SiteFooter() {
   return (
     <footer className="bg-slate-950 text-slate-400 border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6 py-12 space-y-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12 space-y-8 sm:space-y-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-5 space-y-4">
             <p className="text-white font-extrabold text-sm tracking-wider">

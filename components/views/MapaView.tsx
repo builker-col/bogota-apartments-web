@@ -34,15 +34,15 @@ export function MapaView() {
   };
 
   return (
-    <div className="animate-fade-in max-w-7xl mx-auto px-6 py-10 space-y-8">
+    <div className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-6 sm:space-y-8">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <span className="text-xs uppercase font-extrabold tracking-widest text-blue-600">
             Visualizador Urbano
           </span>
-          <h2 className="text-3xl font-black text-slate-900">
-            Mapa Georreferenciado Bogotá
-          </h2>
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight">
+            Mapa del mercado inmobiliario en Bogotá
+          </h1>
           <p className="text-slate-500 text-sm mt-1">
             Simulación activa de capas catastrales. Diseñado para integrarse de
             forma nativa con Mapbox GL JS.
@@ -188,7 +188,7 @@ export function MapaView() {
           </div>
         </div>
 
-        <div className="lg:col-span-3 bg-slate-950 rounded-3xl border border-slate-800 shadow-xl relative overflow-hidden min-h-[500px] flex items-center justify-center">
+        <div className="lg:col-span-3 bg-slate-950 rounded-2xl sm:rounded-3xl border border-slate-800 shadow-xl relative overflow-hidden min-h-[280px] sm:min-h-[400px] lg:min-h-[500px] flex items-center justify-center">
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="absolute top-1/4 left-1/3 text-center animate-bounce duration-1000">
               <div className="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded-lg shadow-lg flex items-center gap-1">
@@ -263,13 +263,13 @@ export function MapaView() {
             </svg>
           </div>
 
-          <div className="absolute top-4 right-4 bg-slate-900/85 backdrop-blur-md p-3 rounded-2xl border border-slate-800 text-[10px] space-y-2 z-10 text-slate-400">
+          <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-slate-900/85 backdrop-blur-md p-2.5 sm:p-3 rounded-xl sm:rounded-2xl border border-slate-800 text-[9px] sm:text-[10px] space-y-1.5 sm:space-y-2 z-10 text-slate-400 max-w-[calc(100%-1.5rem)]">
             <div className="flex items-center gap-2">
-              <Eye size={12} className="text-blue-400" />
-              <span>Visualizador de Capas Mapbox Activo</span>
+              <Eye size={12} className="text-blue-400 shrink-0" />
+              <span className="truncate">Capas Mapbox activas</span>
             </div>
-            <div className="h-px bg-slate-800"></div>
-            <div>Zoom: 12.4 | Lat: 4.6097, Lng: -74.0721</div>
+            <div className="h-px bg-slate-800 hidden sm:block"></div>
+            <div className="hidden sm:block">Zoom: 12.4 | Lat: 4.6097, Lng: -74.0721</div>
           </div>
 
           <div className="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl border border-slate-800 text-xs flex flex-col sm:flex-row justify-between items-center gap-3 z-10">

@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import { ApiView } from "@/components/views/ApiView";
+import { createPageMetadata } from "@/lib/bogota-apartments/seo";
 
-export const metadata: Metadata = {
-  title: "API Desarrolladores",
+export const metadata = createPageMetadata({
+  title: "API de Datos Inmobiliarios de Bogotá",
   description:
-    "Documentación del API REST de Bogotá Apartments. Integra estadísticas inmobiliarias en tu plataforma.",
-};
+    "API REST de datos abiertos del mercado inmobiliario en Bogotá. Integra precios por m², cap rate y reportes mensuales en tu plataforma con Bogotá Apartments.",
+  path: "/api",
+});
 
 export default function ApiPage() {
   return <ApiView />;

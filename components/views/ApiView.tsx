@@ -31,12 +31,21 @@ export function ApiView() {
   };
 
   return (
-    <div className="animate-fade-in max-w-7xl mx-auto px-6 py-10 space-y-8">
+    <div className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-6 sm:space-y-8">
+      <div className="space-y-2">
+        <span className="text-xs uppercase font-extrabold tracking-widest text-blue-600">
+          API REST · Datos abiertos
+        </span>
+        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight">
+          API de datos inmobiliarios de Bogotá
+        </h1>
+      </div>
+
       <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-        <h3 className="text-lg font-extrabold text-slate-800 flex items-center gap-2">
+        <h2 className="text-lg font-extrabold text-slate-800 flex items-center gap-2">
           <Code className="text-blue-600" size={18} />
           Documentación del API de Bogotá Apartments
-        </h3>
+        </h2>
         <p className="text-xs text-slate-500 mt-1">
           Base URL:{" "}
           <code className="text-slate-700 font-mono">{API_BASE_URL}</code>
@@ -87,9 +96,9 @@ export function ApiView() {
           </div>
         </div>
 
-        <div className="lg:col-span-7 bg-slate-950 text-slate-300 rounded-3xl overflow-hidden flex flex-col h-[380px] shadow-xl border border-slate-800">
-          <div className="bg-slate-950 px-5 py-4 border-b border-slate-800/80 flex items-center justify-between">
-            <div className="flex gap-2">
+        <div className="lg:col-span-7 bg-slate-950 text-slate-300 rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col min-h-[320px] sm:h-[380px] shadow-xl border border-slate-800">
+          <div className="bg-slate-950 px-4 sm:px-5 py-3 sm:py-4 border-b border-slate-800/80 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div className="flex flex-wrap gap-2">
               {API_LANGUAGES.map((lang) => (
                 <button
                   key={lang}

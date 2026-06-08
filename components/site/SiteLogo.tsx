@@ -9,7 +9,7 @@ export function SiteLogo() {
         alt="Bogotá Apartments"
         width={1669}
         height={475}
-        className="h-10 sm:h-11 w-auto"
+        className="h-8 sm:h-10 md:h-11 w-auto max-w-[9.5rem] sm:max-w-[12rem] md:max-w-none object-contain object-left"
         priority
       />
     </Link>

@@ -1,3 +1,4 @@
+import { SiteJsonLd } from "@/components/seo/JsonLd";
 import { SiteShell } from "@/components/site/SiteShell";
 
 export default function SiteLayout({
@@ -5,5 +6,10 @@ export default function SiteLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <SiteShell>{children}</SiteShell>;
+  return (
+    <>
+      <SiteJsonLd />
+      <SiteShell>{children}</SiteShell>
+    </>
+  );
 }

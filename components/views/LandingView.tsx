@@ -27,15 +27,15 @@ export function LandingView() {
   const [subscribed, setSubscribed] = useState(false);
 
   return (
-    <div className="animate-fade-in space-y-20 pb-20">
-      <section className="relative py-16 sm:py-24 lg:py-32 bg-white overflow-hidden border-b border-slate-100">
+    <div className="animate-fade-in space-y-12 sm:space-y-20 pb-12 sm:pb-20">
+      <section className="relative py-12 sm:py-24 lg:py-32 bg-white overflow-hidden border-b border-slate-100">
         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-50" />
         <div className="absolute -top-32 right-0 w-[36rem] h-[36rem] bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-1/4 w-[28rem] h-[28rem] bg-indigo-400/8 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute top-1/2 left-0 w-px h-32 bg-gradient-to-b from-transparent via-blue-200 to-transparent hidden lg:block" />
 
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center relative">
-          <div className="lg:col-span-7 space-y-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center relative">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             <div className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200/80 text-emerald-800 px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide">
                 <GitBranch size={13} />
@@ -48,22 +48,25 @@ export function LandingView() {
             </div>
 
             <div className="space-y-5">
-              <h1 className="max-w-2xl text-4xl sm:text-5xl lg:text-[3.5rem] font-black text-slate-900 leading-[1.08] tracking-tight">
-                Datos abiertos de la finca raíz en{" "}
+              <h1 className="max-w-2xl text-3xl sm:text-5xl lg:text-[3.5rem] font-black text-slate-900 leading-[1.1] tracking-tight">
+                Datos abiertos del mercado inmobiliario en{" "}
                 <span className="text-blue-600">Bogotá</span>
               </h1>
 
               <p className="text-slate-600 text-base sm:text-lg max-w-xl leading-relaxed">
-                Proyecto comunitario con código y datasets públicos. Descarga
-                reportes, explora mapas catastrales e integra la API REST sin
-                costo ni restricciones comerciales.
+                <strong className="text-slate-800 font-semibold">
+                  Bogotá Apartments
+                </strong>{" "}
+                es un proyecto open source con datasets públicos del mercado
+                inmobiliario. Descarga reportes, explora mapas catastrales e
+                integra la API REST sin costo ni restricciones comerciales.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3 sm:gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
                 href="/mapa"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 hover:-translate-y-0.5 transition-all flex items-center gap-2 group"
+                className="w-full sm:w-auto justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 sm:hover:-translate-y-0.5 transition-all flex items-center gap-2 group"
               >
                 <span>Visualizar Mapa GIS</span>
                 <ArrowRight
@@ -74,7 +77,7 @@ export function LandingView() {
 
               <Link
                 href="/descargas"
-                className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl border border-slate-800 hover:-translate-y-0.5 hover:shadow-lg transition-all flex items-center gap-2"
+                className="w-full sm:w-auto justify-center bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl border border-slate-800 sm:hover:-translate-y-0.5 hover:shadow-lg transition-all flex items-center gap-2"
               >
                 <Download size={16} />
                 <span>Descargar Datos Abiertos</span>
@@ -99,11 +102,11 @@ export function LandingView() {
           <div className="lg:col-span-5 relative">
             <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/10 via-transparent to-indigo-500/10 rounded-[2rem] blur-2xl pointer-events-none" />
             <div className="relative bg-slate-900 text-white rounded-3xl p-6 sm:p-7 shadow-2xl shadow-slate-900/20 border border-slate-800/80 ring-1 ring-white/10">
-              <div className="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-                <span className="text-[10px] font-mono tracking-[0.2em] text-slate-400">
+              <div className="flex flex-wrap justify-between items-center gap-2 mb-6 border-b border-slate-800 pb-4">
+                <span className="text-[10px] font-mono tracking-[0.15em] sm:tracking-[0.2em] text-slate-400">
                   CIUDAD DE BOGOTÁ
                 </span>
-                <span className="text-xs text-emerald-400 font-bold flex items-center gap-1.5 bg-emerald-400/10 px-2.5 py-1 rounded-full border border-emerald-400/20">
+                <span className="text-[10px] sm:text-xs text-emerald-400 font-bold flex items-center gap-1.5 bg-emerald-400/10 px-2 py-1 sm:px-2.5 rounded-full border border-emerald-400/20">
                   <Unlock size={12} /> Open Data
                 </span>
               </div>
@@ -113,7 +116,7 @@ export function LandingView() {
                   <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest block mb-1">
                     Precio Promedio m²
                   </span>
-                  <span className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+                  <span className="text-2xl sm:text-4xl font-black text-white tracking-tight break-words">
                     $6.616.667{" "}
                     <span className="text-sm font-medium text-slate-400">
                       COP/m²
@@ -161,12 +164,12 @@ export function LandingView() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-2">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16 space-y-2">
           <span className="text-xs uppercase font-extrabold tracking-widest text-blue-600 flex items-center justify-center gap-1">
             <TrendingUp size={14} /> Inteligencia Inmobiliaria
           </span>
-          <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
             Estadísticas y Variación del Suelo
           </h2>
           <p className="text-slate-500 text-sm">
@@ -175,9 +178,9 @@ export function LandingView() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
-            <div className="flex justify-between items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12">
+          <div className="bg-white p-5 sm:p-8 rounded-2xl sm:rounded-3xl border border-slate-100 shadow-sm space-y-6">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
               <div>
                 <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">
                   Evolución Histórica
@@ -254,7 +257,7 @@ export function LandingView() {
                 </defs>
               </svg>
 
-              <div className="mt-4 p-4 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
+              <div className="mt-4 p-4 bg-slate-50 rounded-2xl border border-slate-100 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
                 <div>
                   <span className="text-[10px] uppercase font-bold text-slate-400">
                     Año de Consulta
@@ -263,7 +266,7 @@ export function LandingView() {
                     {HISTORICO_PRECIOS[activePriceIndex].year}
                   </p>
                 </div>
-                <div className="text-right">
+                <div className="sm:text-right">
                   <span className="text-[10px] uppercase font-bold text-slate-400">
                     Precio Promedio
                   </span>
@@ -280,8 +283,8 @@ export function LandingView() {
             </div>
           </div>
 
-          <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
-            <div className="flex justify-between items-start">
+          <div className="bg-white p-5 sm:p-8 rounded-2xl sm:rounded-3xl border border-slate-100 shadow-sm space-y-6">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
               <div>
                 <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">
                   Retorno de Arriendo
@@ -362,9 +365,9 @@ export function LandingView() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-8 bg-slate-900 text-white rounded-3xl flex flex-col justify-between hover:scale-[1.02] transition-all duration-300 relative overflow-hidden">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="p-6 sm:p-8 bg-slate-900 text-white rounded-2xl sm:rounded-3xl flex flex-col justify-between md:hover:scale-[1.02] transition-all duration-300 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-blue-600/20 rounded-full blur-xl"></div>
             <div>
               <Map size={36} className="text-blue-400 mb-6" />
@@ -384,7 +387,7 @@ export function LandingView() {
             </Link>
           </div>
 
-          <div className="p-8 bg-white border border-slate-100 rounded-3xl flex flex-col justify-between hover:scale-[1.02] transition-all duration-300">
+          <div className="p-6 sm:p-8 bg-white border border-slate-100 rounded-2xl sm:rounded-3xl flex flex-col justify-between md:hover:scale-[1.02] transition-all duration-300">
             <div>
               <Database size={36} className="text-emerald-500 mb-6" />
               <h3 className="text-xl font-bold mb-2 text-slate-900">
@@ -404,7 +407,7 @@ export function LandingView() {
             </Link>
           </div>
 
-          <div className="p-8 bg-white border border-slate-100 rounded-3xl flex flex-col justify-between hover:scale-[1.02] transition-all duration-300">
+          <div className="p-6 sm:p-8 bg-white border border-slate-100 rounded-2xl sm:rounded-3xl flex flex-col justify-between md:hover:scale-[1.02] transition-all duration-300">
             <div>
               <Code size={36} className="text-indigo-500 mb-6" />
               <h3 className="text-xl font-bold mb-2 text-slate-900">
@@ -426,8 +429,8 @@ export function LandingView() {
         </div>
       </section>
 
-      <section className="max-w-4xl mx-auto px-6">
-        <div className="bg-slate-950 text-white rounded-3xl p-10 text-center space-y-6 relative overflow-hidden">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="bg-slate-950 text-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 text-center space-y-6 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-tr from-slate-950 to-blue-950 opacity-90 -z-10"></div>
           <span className="text-xs uppercase font-extrabold tracking-widest text-blue-400">
             Suscripción Premium

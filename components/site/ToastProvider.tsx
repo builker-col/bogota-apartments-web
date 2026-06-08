@@ -41,7 +41,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     <ToastContext.Provider value={{ showToast }}>
       {children}
       {toastMessage && (
-        <div className="fixed top-6 right-6 z-50 bg-slate-950 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-blue-500 animate-slide-in">
+        <div className="fixed top-20 left-4 right-4 sm:top-6 sm:left-auto sm:right-6 sm:max-w-sm z-[60] bg-slate-950 text-white px-4 sm:px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-blue-500 animate-slide-in">
           <div className="bg-blue-600 p-1 rounded-full text-white">
             <Check size={14} />
           </div>
