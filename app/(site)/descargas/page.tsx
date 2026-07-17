@@ -5,7 +5,7 @@ import { createPageMetadata } from "@/lib/bogota-apartments/seo";
 export const metadata = createPageMetadata({
   title: "Datos Abiertos del Mercado Inmobiliario en Bogotá",
   description:
-    "Descarga datos abiertos del mercado inmobiliario en Bogotá: reportes mensuales consolidados en CSV y JSON. Datasets gratuitos para análisis y cruce de información.",
+    "Catálogo previsto de datasets abiertos, versionados y documentados sobre el mercado inmobiliario de Bogotá.",
   path: "/descargas",
 });
 

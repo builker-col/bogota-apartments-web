@@ -27,7 +27,7 @@ const organizationSchema = {
   url: "https://builker.com",
   sameAs: [
     "https://builker.com",
-    "https://inmodata.builker.com",
+    "https://inmodata.io",
     "https://tayra.com.co",
   ],
 };
@@ -56,7 +56,7 @@ export function HomePageJsonLd() {
       data={{
         "@context": "https://schema.org",
         "@type": "WebPage",
-        name: "Datos del Mercado Inmobiliario en Bogotá",
+        name: "Bogotá Real Estate Open Data",
         url: SITE_URL,
         description: DEFAULT_DESCRIPTION,
         inLanguage: "es-CO",
@@ -110,22 +110,10 @@ export function DescargasPageJsonLd() {
         "@type": "Dataset",
         name: "Datos abiertos del mercado inmobiliario en Bogotá",
         description:
-          "Reportes mensuales consolidados del mercado inmobiliario de Bogotá D.C. en formato CSV y JSON.",
+          "Catálogo en preparación de conjuntos de datos abiertos del mercado inmobiliario de Bogotá D.C.",
         url: `${SITE_URL}/descargas`,
         inLanguage: "es-CO",
-        license: "https://creativecommons.org/publicdomain/zero/1.0/",
-        distribution: [
-          {
-            "@type": "DataDownload",
-            encodingFormat: "text/csv",
-            contentUrl: `${SITE_URL}/descargas`,
-          },
-          {
-            "@type": "DataDownload",
-            encodingFormat: "application/json",
-            contentUrl: `${SITE_URL}/descargas`,
-          },
-        ],
+        temporalCoverage: "En preparación",
         creator: {
           "@type": "Organization",
           name: SITE_NAME,

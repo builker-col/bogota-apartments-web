@@ -19,7 +19,7 @@ function formatDate(date: string) {
 }
 
 export function BlogPostView({ post }: BlogPostViewProps) {
-  const author = post.author || "Bogotá Apartments";
+  const author = post.author || "Bogotá Real Estate Open Data";
   const heroImageUrl = post.mainImage
     ? urlFor(post.mainImage).width(1600).height(900).auto("format").url()
     : null;

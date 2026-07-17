@@ -2,14 +2,14 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Bogotá Apartments",
-    short_name: "Bogotá Apts",
+    name: "Bogotá Real Estate Open Data",
+    short_name: "Bogotá Open Data",
     description:
-      "Datos abiertos y open source del mercado inmobiliario en Bogotá D.C.",
+      "Proyecto de Builker para explorar datos abiertos del mercado inmobiliario de Bogotá.",
     start_url: "/",
     display: "standalone",
-    background_color: "#f8fafc",
-    theme_color: "#2563eb",
+    background_color: "#07111d",
+    theme_color: "#07111d",
     icons: [
       {
         src: "/android-chrome-192x192.png",

@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "./site";
 
-export const SITE_NAME = "Bogotá Apartments";
+export const SITE_NAME = "Bogotá Real Estate Open Data";
 
 export const SEO_KEYWORDS = [
   "datos del mercado inmobiliario en bogotá",
   "mercado inmobiliario bogotá",
   "datos abiertos",
   "datos abiertos bogotá",
-  "bogotá apartments",
+  "bogotá real estate open data",
   "precio m2 bogotá",
   "finca raíz bogotá",
   "datos catastrales bogotá",
@@ -18,7 +18,7 @@ export const SEO_KEYWORDS = [
 ] as const;
 
 export const DEFAULT_DESCRIPTION =
-  "Bogotá Apartments: datos abiertos del mercado inmobiliario en Bogotá. Precios por m², mapas catastrales, reportes CSV/JSON y API REST. Proyecto open source.";
+  "Proyecto de Builker para descargar, consultar y explorar datos abiertos del mercado inmobiliario de Bogotá con tecnología de Inmodata.";
 
 export const OG_IMAGE = "/img/OG-image.png";
 
@@ -84,6 +84,7 @@ export function createPageMetadata({
 export const SITE_ROUTES = [
   { path: "/", priority: 1.0 },
   { path: "/mapa", priority: 0.8 },
+  { path: "/consultas", priority: 0.8 },
   { path: "/descargas", priority: 0.8 },
   { path: "/api", priority: 0.8 },
   { path: "/blog", priority: 0.8 },

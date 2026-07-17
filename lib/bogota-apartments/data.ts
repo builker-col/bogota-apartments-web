@@ -1,109 +1,112 @@
-export type ReporteMensual = {
+export type IntegrationState = "demo" | "ready" | "planned";
+
+export type PlatformIntegration = {
+  id: "bucket" | "data" | "queries" | "maps" | "ai";
+  name: string;
+  description: string;
+  provider: string;
+  state: IntegrationState;
+};
+
+export type Dataset = {
   id: string;
-  mes: string;
-  descripcion: string;
-  registros: number;
-  tamano: string;
-  tipo: "Completo" | "Compacto" | "Anual";
+  name: string;
+  description: string;
+  formats: string[];
+  cadence: string;
+  coverage: string;
+  fields: string[];
 };
 
-export type HistoricoPrecio = {
-  year: string;
-  precio: number;
-};
-
-export type RentabilidadEstrato = {
-  estrato: string;
-  capRate: number;
-  color: string;
-};
-
-export const REPORTES_MENSUALES: ReporteMensual[] = [
+export const INTEGRATIONS: PlatformIntegration[] = [
   {
-    id: "2026-05",
-    mes: "Mayo 2026",
-    descripcion:
-      "Consolidado general de mercado, cierres notariales y variación mensual.",
-    registros: 1482,
-    tamano: "1.2 MB",
-    tipo: "Completo",
+    id: "bucket",
+    name: "Archivos abiertos",
+    description: "Versiones descargables y trazables de cada conjunto de datos.",
+    provider: "Bucket de Builker",
+    state: "planned",
   },
   {
-    id: "2026-04",
-    mes: "Abril 2026",
-    descripcion:
-      "Reporte catastral integrado con absorción de proyectos nuevos.",
-    registros: 1395,
-    tamano: "1.1 MB",
-    tipo: "Completo",
+    id: "data",
+    name: "Datos normalizados",
+    description: "Lectura de observaciones y series listas para explorar.",
+    provider: "API de Inmodata",
+    state: "demo",
   },
   {
-    id: "2026-03",
-    mes: "Marzo 2026",
-    descripcion:
-      "Comportamiento trimestral, tasas de interés de créditos y arriendos.",
-    registros: 1512,
-    tamano: "1.3 MB",
-    tipo: "Completo",
+    id: "queries",
+    name: "Consultas",
+    description: "Filtros reproducibles por zona, periodo y tipo de inmueble.",
+    provider: "API de Inmodata",
+    state: "demo",
   },
   {
-    id: "2026-02",
-    mes: "Febrero 2026",
-    descripcion:
-      "Dinámica de ofertas activas en portales de corretaje digital.",
-    registros: 1104,
-    tamano: "940 KB",
-    tipo: "Compacto",
+    id: "maps",
+    name: "Mapas",
+    description: "Capas geográficas para leer patrones territoriales.",
+    provider: "API de Inmodata",
+    state: "demo",
   },
   {
-    id: "2026-01",
-    mes: "Enero 2026",
-    descripcion:
-      "Lanzamiento de proyecciones anuales e histórico consolidado.",
-    registros: 1250,
-    tamano: "1.0 MB",
-    tipo: "Completo",
-  },
-  {
-    id: "2025-full",
-    mes: "Histórico Completo 2025",
-    descripcion:
-      "Base de datos anual consolidada y depurada de Bogotá.",
-    registros: 15480,
-    tamano: "14.2 MB",
-    tipo: "Anual",
-  },
-  {
-    id: "2024-full",
-    mes: "Histórico Completo 2024",
-    descripcion:
-      "Serie histórica de precios y velocidad de rotación inmobiliaria.",
-    registros: 14120,
-    tamano: "12.8 MB",
-    tipo: "Anual",
+    id: "ai",
+    name: "Exploración con IA",
+    description: "Preguntas en lenguaje natural con fuentes y contexto.",
+    provider: "Inmodata Intelligence",
+    state: "planned",
   },
 ];
 
-export const HISTORICO_PRECIOS: HistoricoPrecio[] = [
-  { year: "2021", precio: 5100000 },
-  { year: "2022", precio: 5450000 },
-  { year: "2023", precio: 5900000 },
-  { year: "2024", precio: 6250000 },
-  { year: "2025", precio: 6500000 },
-  { year: "2026", precio: 6616667 },
+export const DATASETS: Dataset[] = [
+  {
+    id: "oferta-residencial",
+    name: "Oferta residencial",
+    description: "Observaciones anonimizadas de oferta para estudiar disponibilidad y distribución territorial.",
+    formats: ["CSV", "Parquet"],
+    cadence: "Por definir",
+    coverage: "Bogotá D.C.",
+    fields: ["zona", "tipo", "área", "precio", "periodo"],
+  },
+  {
+    id: "indicadores-zona",
+    name: "Indicadores por zona",
+    description: "Agregados territoriales para comparar sectores sin exponer registros privados.",
+    formats: ["CSV", "JSON"],
+    cadence: "Por definir",
+    coverage: "Bogotá D.C.",
+    fields: ["zona", "indicador", "valor", "unidad", "periodo"],
+  },
+  {
+    id: "diccionario-metodologia",
+    name: "Diccionario y metodología",
+    description: "Definiciones, transformaciones y notas necesarias para interpretar los datos.",
+    formats: ["PDF", "JSON"],
+    cadence: "Con cada versión",
+    coverage: "Proyecto",
+    fields: ["campo", "definición", "fuente", "tratamiento"],
+  },
 ];
 
-export const RENTABILIDAD_ESTRATO: RentabilidadEstrato[] = [
-  { estrato: "Estrato 3", capRate: 7.4, color: "#10b981" },
-  { estrato: "Estrato 4", capRate: 6.8, color: "#3b82f6" },
-  { estrato: "Estrato 5", capRate: 6.1, color: "#6366f1" },
-  { estrato: "Estrato 6", capRate: 5.2, color: "#f59e0b" },
+export const DEMO_ZONES = [
+  { name: "Chapinero", x: 58, y: 28, size: 23, tone: "#ff4fd8" },
+  { name: "Suba", x: 33, y: 24, size: 27, tone: "#6b5cff" },
+  { name: "Teusaquillo", x: 47, y: 45, size: 18, tone: "#00d6c9" },
+  { name: "Kennedy", x: 35, y: 68, size: 24, tone: "#2b7fff" },
+  { name: "Usaquén", x: 66, y: 15, size: 20, tone: "#ae5cff" },
 ];
 
-export const MAPBOX_INIT_SNIPPET = `mapboxgl.accessToken = 'TU_TOKEN_MAPBOX_AQUÍ';
-const map = new mapboxgl.Map({
-    container: 'map-container',
-    style: 'mapbox://styles/mapbox/dark-v11',
-    center: [-74.0721, 4.6097],
-    zoom: 12
-});`;
+export const DEMO_ROWS = [
+  { zone: "Chapinero", property: "Apartamento", area: "72–95 m²", period: "Muestra demo" },
+  { zone: "Suba", property: "Apartamento", area: "55–80 m²", period: "Muestra demo" },
+  { zone: "Teusaquillo", property: "Casa", area: "110–160 m²", period: "Muestra demo" },
+  { zone: "Kennedy", property: "Apartamento", area: "45–70 m²", period: "Muestra demo" },
+];
+
+export const API_PREVIEW = {
+  baseUrl: "https://api.inmodata.io/open-data/bogota/v1",
+  endpoints: [
+    { method: "GET", path: "/datasets", purpose: "Catálogo y versiones disponibles" },
+    { method: "GET", path: "/observations", purpose: "Consulta paginada y filtrada" },
+    { method: "POST", path: "/query", purpose: "Agregaciones y comparaciones" },
+    { method: "POST", path: "/assistant", purpose: "Preguntas con IA y referencias" },
+  ],
+};

@@ -6,7 +6,7 @@ export function InmodataApiBanner() {
   return (
     <aside
       className="rounded-2xl border border-slate-200/80 bg-slate-50/80 p-4 sm:p-5"
-      aria-label="InmoData — API de datos inmobiliarios"
+      aria-label="Inmodata — API de datos inmobiliarios"
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
         <div className="flex items-center justify-between gap-3 sm:shrink-0 sm:justify-start">
@@ -18,14 +18,14 @@ export function InmodataApiBanner() {
           >
             <Image
               src="/img/logos/inmodata.png"
-              alt="InmoData"
+              alt="Inmodata"
               width={160}
               height={45}
               className="h-7 w-auto max-w-[9.5rem] sm:h-8 sm:max-w-none"
             />
           </a>
           <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 sm:hidden">
-            Patrocinado
+            Tecnología Inmodata
           </span>
         </div>
 
@@ -36,15 +36,15 @@ export function InmodataApiBanner() {
 
         <div className="flex-1 min-w-0 space-y-1.5 border-t border-slate-200/80 pt-3 sm:border-t-0 sm:pt-0">
           <p className="hidden sm:block text-[10px] font-bold uppercase tracking-widest text-slate-400">
-            Patrocinado
+            Tecnología Inmodata
           </p>
           <p className="text-sm font-bold text-slate-900 leading-snug">
-            Todos los datos inmobiliarios de Colombia y LATAM en una sola API.
+            Datos inmobiliarios de toda Colombia en una sola API. Próximamente, Latinoamérica.
           </p>
           <p className="text-xs text-slate-600 leading-relaxed">
-            <span className="font-semibold text-slate-800">InmoData</span> unifica
-            y limpia la información del mercado para decisiones de inversión,
-            captación y arriendo basadas en datos reales.
+            <span className="font-semibold text-slate-800">Inmodata</span> es una
+            plataforma comercial propietaria con plan gratuito y planes de pago
+            para consultar e integrar información del mercado inmobiliario.
           </p>
         </div>
 

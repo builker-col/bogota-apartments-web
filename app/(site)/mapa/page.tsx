@@ -4,7 +4,7 @@ import { createPageMetadata } from "@/lib/bogota-apartments/seo";
 export const metadata = createPageMetadata({
   title: "Mapa del Mercado Inmobiliario en Bogotá",
   description:
-    "Mapa georreferenciado del mercado inmobiliario en Bogotá. Capas catastrales, precios por m² y cap rate por zona. Datos abiertos de Bogotá Apartments.",
+    "Prototipo del mapa de datos abiertos inmobiliarios de Bogotá, preparado para conectarse a la API geográfica de Inmodata.",
   path: "/mapa",
 });
 

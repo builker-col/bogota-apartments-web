@@ -1,155 +1,37 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Code, Copy } from "lucide-react";
-import {
-  API_BASE_URL,
-  API_MONTHLY_PATH,
-  API_MONTHLY_URL,
-} from "@/lib/bogota-apartments/site";
-import {
-  API_SNIPPETS,
-  type ApiLanguage,
-} from "@/lib/bogota-apartments/api-snippets";
+import { Check, Copy, ExternalLink } from "lucide-react";
+import { API_PREVIEW } from "@/lib/bogota-apartments/data";
 import { copyToClipboard } from "@/lib/bogota-apartments/copy-to-clipboard";
-import { InmodataApiBanner } from "@/components/promo/InmodataApiBanner";
-import { useToast } from "@/components/site/ToastProvider";
 
-const API_LANGUAGES: ApiLanguage[] = ["curl", "javascript", "python"];
+const snippet = `// Contrato de integración — demo, no ejecutar todavía
+const response = await fetch(
+  "https://api.inmodata.io/open-data/bogota/v1/query",
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      zone: "chapinero",
+      propertyType: "apartment",
+      groupBy: "month"
+    })
+  }
+);
+
+const result = await response.json();`;
 
 export function ApiView() {
-  const { showToast } = useToast();
-  const [apiLanguage, setApiLanguage] = useState<ApiLanguage>("curl");
-  const [copiedCode, setCopiedCode] = useState(false);
-
-  const handleCopyCode = async () => {
-    const success = await copyToClipboard(API_SNIPPETS[apiLanguage]);
-    if (success) {
-      setCopiedCode(true);
-      showToast("Código copiado al portapapeles.");
-      setTimeout(() => setCopiedCode(false), 2000);
-    }
-  };
-
+  const [copied, setCopied] = useState(false);
+  const copy = async () => { if (await copyToClipboard(snippet)) { setCopied(true); setTimeout(() => setCopied(false), 1800); } };
   return (
-    <div className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-6 sm:space-y-8">
-      <div className="space-y-2">
-        <span className="text-xs uppercase font-extrabold tracking-widest text-blue-600">
-          API REST · Datos abiertos
-        </span>
-        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight">
-          API de datos inmobiliarios de Bogotá
-        </h1>
-      </div>
-
-      <InmodataApiBanner />
-
-      <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-        <h2 className="text-lg font-extrabold text-slate-800 flex items-center gap-2">
-          <Code className="text-blue-600" size={18} />
-          Documentación del API de Bogotá Apartments
-        </h2>
-        <p className="text-xs text-slate-500 mt-1">
-          Base URL:{" "}
-          <code className="text-slate-700 font-mono">{API_BASE_URL}</code>
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <div className="lg:col-span-5 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm space-y-6">
-          <div>
-            <span className="text-[10px] font-black uppercase text-blue-600 tracking-wider">
-              Servicio REST
-            </span>
-            <h4 className="text-base font-black text-slate-900">
-              Estructura del Request
-            </h4>
-          </div>
-
-          <div className="space-y-3 text-xs">
-            <div>
-              <span className="bg-emerald-100 text-emerald-800 font-extrabold px-2 py-0.5 rounded text-[10px] uppercase">
-                GET
-              </span>
-              <code className="block bg-slate-900 text-blue-400 p-3 rounded-xl font-mono mt-1 break-all text-[11px]">
-                {API_MONTHLY_URL}
-              </code>
-              <span className="text-[10px] text-slate-400 mt-1 block font-mono">
-                Path: {API_MONTHLY_PATH}
-              </span>
-            </div>
-
-            <div className="h-px bg-slate-100"></div>
-
-            <div className="space-y-2">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">
-                Query Params
-              </span>
-              <div className="flex justify-between">
-                <code className="font-bold text-slate-800">month</code>
-                <span className="text-slate-500 italic">Ej: &quot;2026-05&quot;</span>
-              </div>
-              <div className="flex justify-between">
-                <code className="font-bold text-slate-800">format</code>
-                <span className="text-slate-500 italic">
-                  &quot;json&quot; o &quot;csv&quot;
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="lg:col-span-7 bg-slate-950 text-slate-300 rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col min-h-[320px] sm:h-[380px] shadow-xl border border-slate-800">
-          <div className="bg-slate-950 px-4 sm:px-5 py-3 sm:py-4 border-b border-slate-800/80 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div className="flex flex-wrap gap-2">
-              {API_LANGUAGES.map((lang) => (
-                <button
-                  key={lang}
-                  type="button"
-                  onClick={() => setApiLanguage(lang)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase transition-colors ${
-                    apiLanguage === lang
-                      ? "bg-blue-600 text-white"
-                      : "text-slate-500 hover:text-slate-300"
-                  }`}
-                >
-                  {lang === "curl" ? "cURL" : lang}
-                </button>
-              ))}
-            </div>
-
-            <button
-              type="button"
-              onClick={handleCopyCode}
-              className="text-slate-400 hover:text-white flex items-center gap-1.5 text-xs font-bold transition-colors"
-            >
-              {copiedCode ? (
-                <Check size={14} className="text-emerald-400" />
-              ) : (
-                <Copy size={14} />
-              )}
-              <span>{copiedCode ? "¡Copiado!" : "Copiar"}</span>
-            </button>
-          </div>
-
-          <div className="flex-1 p-6 font-mono text-xs text-slate-300 overflow-auto bg-slate-950/40">
-            <pre className="whitespace-pre-wrap">
-              {API_SNIPPETS[apiLanguage]}
-            </pre>
-          </div>
-
-          <div className="p-4 bg-slate-950 border-t border-slate-900 font-mono text-[10px] text-emerald-400">
-            <span className="text-[9px] text-slate-500 font-bold block mb-1 uppercase tracking-wider">
-              Response Body (200 OK)
-            </span>
-            <span>
-              {"{"} &quot;status&quot;: &quot;success&quot;, &quot;month&quot;:
-              &quot;2026-05&quot;, &quot;precioM2&quot;: 6616667,
-              &quot;capRate&quot;: 6.61 {"}"}
-            </span>
-          </div>
-        </div>
-      </div>
+    <div className="bg-[#07111d] text-white">
+      <section className="mx-auto max-w-[1480px] px-5 py-16 sm:px-8 lg:px-12 lg:py-24"><p className="font-mono text-[10px] uppercase tracking-[.22em] text-fuchsia-300">API / Contrato en diseño</p><div className="mt-6 grid gap-10 lg:grid-cols-[1.1fr_.55fr] lg:items-end"><h1 className="text-5xl font-medium leading-[.9] tracking-[-.055em] sm:text-8xl">Una puerta estable<br />hacia los datos.</h1><p className="text-base leading-relaxed text-slate-400">La capa programática será servida por Inmodata. Aquí mostramos el contrato de producto previsto, no una API pública activa.</p></div></section>
+      <section className="border-y border-white/15"><div className="mx-auto grid max-w-[1480px] lg:grid-cols-[.8fr_1.2fr]">
+        <div className="border-b border-white/15 p-5 sm:p-8 lg:border-b-0 lg:border-r lg:p-12"><p className="font-mono text-[9px] uppercase tracking-[.2em] text-cyan-300">Endpoint base previsto</p><p className="mt-4 break-all font-mono text-sm">{API_PREVIEW.baseUrl}</p><div className="mt-10 divide-y divide-white/10 border-y border-white/10">{API_PREVIEW.endpoints.map(endpoint => <div key={endpoint.path} className="grid grid-cols-[55px_1fr] gap-4 py-5"><span className="font-mono text-[10px] text-fuchsia-300">{endpoint.method}</span><div><code className="text-sm text-white">{endpoint.path}</code><p className="mt-2 text-xs text-slate-500">{endpoint.purpose}</p></div></div>)}</div></div>
+        <div className="bg-[#02070c] p-5 sm:p-8 lg:p-12"><div className="flex items-center justify-between border-b border-white/10 pb-4"><span className="font-mono text-[10px] uppercase tracking-[.18em] text-slate-500">Ejemplo JavaScript</span><button onClick={copy} className="flex items-center gap-2 text-xs text-slate-400 hover:text-white">{copied ? <Check size={14} /> : <Copy size={14} />}{copied ? "Copiado" : "Copiar"}</button></div><pre className="mt-7 overflow-x-auto whitespace-pre-wrap text-[12px] leading-7 text-cyan-200">{snippet}</pre></div>
+      </div></section>
+      <section className="mx-auto max-w-[1480px] px-5 py-16 sm:px-8 lg:px-12 lg:py-24"><div className="grid gap-8 lg:grid-cols-[.65fr_1fr]"><h2 className="text-4xl font-medium leading-none tracking-[-.04em] sm:text-6xl">Datos abiertos aquí.<br /><span className="text-fuchsia-300">Tecnología en Inmodata.</span></h2><div className="max-w-2xl"><p className="leading-relaxed text-slate-400">Las descargas abiertas permanecerán disponibles sin depender de la API. Las consultas avanzadas, mapas y asistencia con IA usarán la tecnología propietaria de Inmodata, una plataforma comercial con cobertura en toda Colombia, plan gratuito y planes de pago. Su expansión a Latinoamérica está prevista para una siguiente etapa.</p><a href="https://inmodata.io" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 border-b border-cyan-300 pb-2 text-sm font-bold text-cyan-300">Conocer Inmodata <ExternalLink size={15} /></a></div></div></section>
     </div>
   );
 }

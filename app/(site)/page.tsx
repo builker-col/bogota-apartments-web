@@ -3,9 +3,9 @@ import { LandingView } from "@/components/views/LandingView";
 import { createPageMetadata } from "@/lib/bogota-apartments/seo";
 
 export const metadata = createPageMetadata({
-  title: "Datos del Mercado Inmobiliario en Bogotá | Bogotá Apartments",
+  title: "Bogotá Real Estate Open Data | Un proyecto de Builker",
   description:
-    "Consulta datos abiertos del mercado inmobiliario en Bogotá: precios por m², cap rate, mapas catastrales y datasets CSV/JSON. Proyecto open source de Builker.",
+    "Descarga, consulta y explora datos abiertos del mercado inmobiliario de Bogotá. Un proyecto de Builker con tecnología de Inmodata.",
   path: "/",
   absoluteTitle: true,
 });

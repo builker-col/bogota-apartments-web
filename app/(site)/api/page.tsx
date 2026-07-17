@@ -4,7 +4,7 @@ import { createPageMetadata } from "@/lib/bogota-apartments/seo";
 export const metadata = createPageMetadata({
   title: "API de Datos Inmobiliarios de Bogotá",
   description:
-    "API REST de datos abiertos del mercado inmobiliario en Bogotá. Integra precios por m², cap rate y reportes mensuales en tu plataforma con Bogotá Apartments.",
+    "Vista previa del contrato de API que conectará el proyecto de datos abiertos de Bogotá con la infraestructura de Inmodata.",
   path: "/api",
 });
 

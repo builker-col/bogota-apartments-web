@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #eef0ec;
+  --foreground: #07111d;
 }
 
 @theme inline {
@@ -21,6 +21,18 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   overflow-x: hidden;
+}
+
+::selection {
+  background: #d9ff48;
+  color: #07111d;
+}
+
+a,
+button,
+input,
+select {
+  outline-offset: 4px;
 }
 
 @keyframes fade-in {
@@ -51,4 +63,15 @@ body {
 
 .animate-slide-in {
   animation: slide-in 0.3s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
